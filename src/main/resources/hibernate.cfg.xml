@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://rm-4xo63l909kdrexz8kio.mysql.germany.rds.aliyuncs.com:3306/pouletroti?rewriteBatchedStatements=true</property>
+        <property name="hibernate.connection.username">poulet</property>
+        <property name="hibernate.connection.password">Poulet2021</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.format_sql">false</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <property name="hibernate.connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
+
+        <mapping resource="com/ayy/bean/Manager.hbm.xml"/>
+        <mapping resource="com/ayy/bean/Poulet.hbm.xml"/>
+        <mapping resource="com/ayy/bean/Bac.hbm.xml"/>
+        <mapping resource="com/ayy/bean/Commande.hbm.xml"/>
+        <mapping resource="com/ayy/bean/Pret.hbm.xml"/>
+        <mapping resource="com/ayy/bean/WaitQueue.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

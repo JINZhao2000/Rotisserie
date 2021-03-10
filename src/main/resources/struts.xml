@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true"/>
+    <package name="ayy" namespace="/" extends="json-default">
+        <interceptors>
+            <interceptor name="loginInterceptor" class="com.ayy.interceptor.LoginInterceptor"/>
+            <interceptor-stack name="pouletStack">
+                <interceptor-ref name="loginInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="pouletStack"/>
+
+        <global-results>
+            <result name="login">/login.jsp</result>
+        </global-results>
+
+        <!-- pretAction -->
+        <action name="sortirDuBac" class="pretAction" method="sortirDuBac">
+            <result type="redirect">toPanneau.action</result>
+        </action>
+        <action name="commandesPretes" class="pretAction" method="commandesPretes">
+            <result type="json">
+                <param name="root">commandesPretes</param>
+            </result>
+        </action>
+        <action name="retirer" class="pretAction" method="retirer">
+            <result type="redirect">toPanneau.action</result>
+        </action>
+
+        <!-- bacAction -->
+        <action name="getAllBac" class="bacAction" method="getAllBac">
+            <result type="json">
+                <param name="root">allBacs</param>
+            </result>
+        </action>
+
+        <action name="mettreAuBac" class="bacAction" method="mettreAuBac">
+            <result type="redirect">toPanneau.action</result>
+        </action>
+
+        <!-- waitQueueAction -->
+        <action name="queue" class="waitQueueAction" method="queue">
+            <result type="json">
+                <param name="root">waitQueues</param>
+            </result>
+        </action>
+
+        <!-- pouletAction -->
+        <action name="stock" class="pouletAction" method="stock">
+            <result type="json">
+                <param name="root">poulets</param>
+            </result>
+        </action>
+
+        <!-- commandeAction -->
+        <action name="saveCommande" class="commandeAction" method="saveCommande">
+            <result>/success.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+
+        <!-- pageDispatcherAction -->
+        <action name="toPrise" class="pageDispatcherAction" method="toPrise">
+            <result>/WEB-INF/prise.jsp</result>
+        </action>
+        <action name="toPanneau" class="pageDispatcherAction" method="toPanneau">
+            <result>/WEB-INF/panneau.jsp</result>
+        </action>
+        <action name="toIndex" class="pageDispatcherAction" method="toIndex">
+            <result>/WEB-INF/gestion.jsp</result>
+        </action>
+        <action name="toLogin" class="pageDispatcherAction" method="toLogin">
+            <result>/login.jsp</result>
+        </action>
+
+        <!-- managerAction -->
+        <action name="logout" class="managerAction" method="logout">
+            <result>/login.jsp</result>
+        </action>
+        <action name="login" class="managerAction" method="login">
+            <result>/WEB-INF/gestion.jsp</result>
+            <result name="input">/login.jsp</result>
+        </action>
+    </package>
+</struts>

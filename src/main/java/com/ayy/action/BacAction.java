@@ -3,13 +3,14 @@ package com.ayy.action;
 import com.ayy.bean.Bac;
 import com.ayy.bean.WaitQueue;
 import com.ayy.service.BacService;
-import com.ayy.service.PretService;
 import com.ayy.service.WaitQueueService;
 import com.ayy.util.PouletLog;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.context.WebApplicationContext;
 
 import java.sql.Time;
 import java.text.DateFormat;
@@ -23,17 +24,11 @@ import java.util.List;
  * @ Version 1.0
  */
 @Controller("bacAction")
+@Scope(WebApplicationContext.SCOPE_SESSION)
 public class BacAction extends ActionSupport {
     private BacService bacService;
     private WaitQueueService waitQueueService;
-    private static DateFormat format = new SimpleDateFormat("HH:mm:ss");
-    private PretService pretService;
-    private int mab = 0;
 
-    @Autowired
-    public void setPretService(PretService pretService) {
-        this.pretService = pretService;
-    }
 
     @Autowired
     public void setBacService(BacService bacService) {
@@ -70,6 +65,8 @@ public class BacAction extends ActionSupport {
 
     /* ------------------------ */
 
+    private static DateFormat format = new SimpleDateFormat("HH:mm:ss");
+    private int mab = 0;
     private List<Bac> allBacs;
 
     public List<Bac> getAllBacs() {

@@ -5,7 +5,9 @@ import com.ayy.service.WaitQueueService;
 import com.ayy.util.PouletLog;
 import com.opensymphony.xwork2.Action;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.context.WebApplicationContext;
 
 import java.util.List;
 
@@ -16,6 +18,7 @@ import java.util.List;
  * @ Version 1.0
  */
 @Controller("waitQueueAction")
+@Scope(WebApplicationContext.SCOPE_SESSION)
 public class WaitQueueAction {
     private WaitQueueService waitQueueService;
 

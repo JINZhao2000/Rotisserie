@@ -9,7 +9,9 @@ import com.ayy.util.PouletLog;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.context.WebApplicationContext;
 
 /**
  * @ Description
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Controller;
  * @ Version 1.0
  */
 @Controller("commandeAction")
+@Scope(WebApplicationContext.SCOPE_SESSION)
 public class CommandeAction extends ActionSupport {
     private CommandeService commandeService;
     private WaitQueueService waitQueueService;

@@ -5,7 +5,9 @@ import com.ayy.service.*;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.context.WebApplicationContext;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,15 +19,15 @@ import java.util.List;
  * @ Version 1.0
  */
 @Controller("pretAction")
+@Scope(WebApplicationContext.SCOPE_SESSION)
 public class PretAction extends ActionSupport {
     private PretService pretService;
     private BacService bacService;
     private CommandeService commandeService;
     private PouletService pouletService;
     private WaitQueueService waitQueueService;
-    private List<Commande> commandesPretes;
-    private int bid = 0;
-    private int numCom = 0;
+
+
 
     @Autowired
     public void setWaitQueueService(WaitQueueService waitQueueService) {
@@ -94,6 +96,11 @@ public class PretAction extends ActionSupport {
         numCom=0;
         return Action.SUCCESS;
     }
+
+    /* ------------------------ */
+    private List<Commande> commandesPretes;
+    private int bid = 0;
+    private int numCom = 0;
 
     public List<Commande> getCommandesPretes() {
         return commandesPretes;

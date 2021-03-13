@@ -3,9 +3,7 @@ package com.ayy.action;
 import com.ayy.util.PouletLog;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.context.WebApplicationContext;
 
 /**
  * @ Description
@@ -14,7 +12,6 @@ import org.springframework.web.context.WebApplicationContext;
  * @ Version 1.0
  */
 @Controller("pageDispatcherAction")
-@Scope(WebApplicationContext.SCOPE_SESSION)
 public class PageDispatcherAction extends ActionSupport {
     public String toLogin() {
         PouletLog.logger.debug("To page login");

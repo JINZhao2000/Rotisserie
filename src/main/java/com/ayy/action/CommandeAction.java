@@ -20,7 +20,6 @@ import org.springframework.web.context.WebApplicationContext;
  * @ Version 1.0
  */
 @Controller("commandeAction")
-@Scope(WebApplicationContext.SCOPE_SESSION)
 public class CommandeAction extends ActionSupport {
     private CommandeService commandeService;
     private WaitQueueService waitQueueService;

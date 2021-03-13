@@ -30,6 +30,6 @@
     </listener>
 
     <welcome-file-list>
-        <welcome-file>toLogin.action</welcome-file>
+        <welcome-file>/login.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

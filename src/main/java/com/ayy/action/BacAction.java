@@ -24,7 +24,6 @@ import java.util.List;
  * @ Version 1.0
  */
 @Controller("bacAction")
-@Scope(WebApplicationContext.SCOPE_SESSION)
 public class BacAction extends ActionSupport {
     private BacService bacService;
     private WaitQueueService waitQueueService;

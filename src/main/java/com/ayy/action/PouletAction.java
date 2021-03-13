@@ -20,7 +20,6 @@ import java.util.List;
  * @ Version 1.0
  */
 @Controller("pouletAction")
-@Scope(WebApplicationContext.SCOPE_SESSION)
 public class PouletAction extends ActionSupport {
     private PouletService pouletService;
 
